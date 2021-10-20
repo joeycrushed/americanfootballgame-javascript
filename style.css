@@ -1,41 +1,51 @@
 html {
-    background: url(https://images.unsplash.com/photo-1566577738928-c49fe1932e84?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=764&q=80) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    font-family: Helvetica, sans-serif;
-   
+    background-color: #EDEEF2;
+    font-family: 'Archivo Narrow', sans-serif;
 }
 
 #container {
     background-color: rgba(255, 255, 255, 0.76);
-    border-radius: 50px;
     margin: 40px 120px 5px 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 25px 0px;
+    padding: 25px 0px;  
 }
 
-#container-game {
-    background-color: rgba(255, 255, 255, 0.76);
-    border-radius: 50px;
-    margin: 10px 120px 5px 120px;
-    padding: 25px 0px;
-    text-align: center;
+#container h1 {
+    color: #004ACE;
 }
 
+.line {
+    width: 90%;
+    height: 10px;
+    border-bottom: 1px solid #c5c5c57d;
+}
+.the_flip {
+    margin-top: 10px;
+    margin-bottom: -30px;
+}
+    
 .the_flip h4 {
     text-align: center;
-    font-weight: lighter;
-    font-style: italic;
+    font-weight:100;
+    color: #8F8F90;
 }
+
 
 .container > * {
     margin-bottom: 50px;
     text-align: center;
+}
+#container-game {
+    text-align: center;
+    margin-top: 10px;
+    width: 85%;
+}
+
+#container-game h2 {
+    color: #8F8F90;
 }
 
 select {
@@ -45,4 +55,22 @@ select {
 .hidden {
     display: none;
     visibility: none;
+}
+
+.playbutton {
+    margin-bottom: 25px;
+}
+
+.game {
+    display: flex;
+    justify-content: space-around;
+}
+
+.teams p{
+    letter-spacing:1px;
+    font-weight: bold;
+}
+
+.scores p {
+    color: #8F8F90;
 }

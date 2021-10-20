@@ -58,5 +58,4 @@ function flipCoin(event) {
 
 playButton.addEventListener('click', (e) => {
     theFlip.classList.add('hidden')
-    theGame.classList.remove('hidden')
 })
