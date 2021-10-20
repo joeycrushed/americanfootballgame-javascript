@@ -3,6 +3,7 @@ const form = document.querySelector('#form')
 const pickCoin = document.querySelector('#cointoss')
 const coinToss = document.getElementById('flipcoin')
 const playButton = document.querySelector(".playbutton")
+const theFlip = document.querySelector(".the_flip")
 
 // Team Objects
 
@@ -55,7 +56,5 @@ function flipCoin(event) {
 // Kick off
 
 playButton.addEventListener('click', (e) => {
-    form.classList.add('hidden')
-    playButton.classList.add('hidden')
-    results.classList.add('hidden')
+    theFlip.classList.add('hidden')
 })
