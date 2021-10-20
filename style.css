@@ -11,12 +11,20 @@ html {
 #container {
     background-color: rgba(255, 255, 255, 0.76);
     border-radius: 50px;
-    margin: 40px 120px;
+    margin: 40px 120px 5px 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 25px 0px;
+}
+
+#container-game {
+    background-color: rgba(255, 255, 255, 0.76);
+    border-radius: 50px;
+    margin: 10px 120px 5px 120px;
+    padding: 25px 0px;
+    text-align: center;
 }
 
 .the_flip h4 {
@@ -36,4 +44,5 @@ select {
 
 .hidden {
     display: none;
+    visibility: none;
 }

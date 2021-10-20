@@ -4,6 +4,7 @@ const pickCoin = document.querySelector('#cointoss')
 const coinToss = document.getElementById('flipcoin')
 const playButton = document.querySelector(".playbutton")
 const theFlip = document.querySelector(".the_flip")
+const theGame = document.querySelector("#container-game")
 
 // Team Objects
 
@@ -57,4 +58,5 @@ function flipCoin(event) {
 
 playButton.addEventListener('click', (e) => {
     theFlip.classList.add('hidden')
+    theGame.classList.remove('hidden')
 })
