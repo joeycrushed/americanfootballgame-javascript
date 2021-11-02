@@ -5,16 +5,20 @@ const coinToss = document.getElementById('flipcoin')
 const playButton = document.querySelector(".playbutton")
 const theFlip = document.querySelector(".the_flip")
 const theGame = document.querySelector("#container-game")
+const kickOff = document.querySelector(".kickoff")
+const gameInfo = document.querySelector(".gameinfo")
 
 // Team Objects
 
 let yourTeam = {
+    name: "Your Team",
     position: 0,
     hasBall: false,
     coin: ""
 }   
 
 let otherTeam = {
+    name: "Rival Team",
     position:  0,
     hasBall: false,
     coin: ""
@@ -59,3 +63,20 @@ function flipCoin(event) {
 playButton.addEventListener('click', (e) => {
     theFlip.classList.add('hidden')
 })
+
+kickOff.addEventListener('click', (e) => {
+    kickOffDistance = Math.floor(Math.random() * 50) + 1
+    otherTeam.position = kickOffDistance
+    console.log(otherTeam.position)
+    console.log(kickOffDistance)
+    gameInfo.innerHTML = `${yourTeam.name} have kicked the ball, the ${otherTeam.name} have caught it on the ${otherTeam.position} yard line`
+    kickOff.classList.add('hidden')
+    Play.classList.remove('hidden')
+
+})
+
+nextPlay.addEventListener('click', (e) => {
+     
+})
+
+
