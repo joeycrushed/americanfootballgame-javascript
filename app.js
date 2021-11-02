@@ -40,7 +40,6 @@ form.addEventListener('submit', (e) => {
 
 // Coin Flip
 
-
 coinToss.addEventListener('click', flipCoin)
 
 function flipCoin(event) {
@@ -68,8 +67,7 @@ function flipCoin(event) {
 playButton.addEventListener('click', (e) => {
     theFlip.classList.add('hidden')
     kickOff.classList.remove('hidden')
-    nextPlay.classList.remove('hidden')
-    
+    nextPlay.classList.remove('hidden')  
 })
 
 kickOff.addEventListener('click', (e) => {
@@ -81,50 +79,50 @@ kickOff.addEventListener('click', (e) => {
 
 })
 
+// Next Play
+
 nextPlay.addEventListener('click', (e) => {
+    if (otherTeam.tenYards < 10 && otherTeam.down != 4) {
+        runPlay()
+        if(otherTeam.tenYards >= 10 || yards >= 10) {
+            otherTeam.down = 0
+        } else {
+            otherTeam.down ++
+        }
+    } else {
+        gameInfo.innerHTML = "It's fourth down! Kick or go for it?"
+    }
+})   
      // update the text to say what kind of play it was
      // run or pass
      // create a chance of stopping
      // if over 10 yards downs reset 
      // if over 3 tries they don't get over 10 yards team kicks balls if nearer to the endzone, field goal or punt
 
-})
+
+
+
+// Run Play
 
 const runPlay = () => {
-    if(otherTeam.down <= 4) {
-        const chance = Math.random()
-        console.log(chance)
-    if(chance > 0.90) {
-        let yards = Math.floor(Math.random() * 10);
+    let chance = Math.random()
+    if(chance > 0.60) {
+        let yards = Math.floor(Math.random() * 5);
         otherTeam.position += yards
-        otherTeam.down ++
-        console.log(`50% - Run play 1-10 yards - Total Yards: ${yards}`)
-        console.log(`This is the other teams position on the field - ${otherTeam.position} yard line`)
+        gameInfo.innerHTML = `${otherTeam} ran the ball for a gain of ${yards}. They are on the ${otherTeam.position}`
     }
-    else if (chance > 0.75) {
-        let yards = Math.floor(Math.random() * 15)
+    else if (chance > 0.50) {
+        let yards = Math.floor(Math.random() * 11)
         otherTeam.position += yards
-        console.log(`50% chance run play ${yards}`)
-        otherTeam.down ++
+        gameInfo.innerHTML = `${otherTeam.name} ran the ball for a gain of ${yards}. They are on the ${otherTeam.position}`
     }
-    else if (chance > 0.20){
+    else if (chance > 0.10){
         let yards = Math.floor(Math.random() * 25);
         otherTeam.position += yards
-        console.log(`10% chance run play ${yards}`)
-        otherTeam.down ++
+        gameInfo.innerHTML = `${otherTeam.name} ran the ball for a gain of ${yards}. They are on the ${otherTeam.position}`
     }
     else {
         console.log('No Gain')
-        otherTeam.down ++
-        }
-    }
-    else {
-        console.log(`You should kick the ball or try on 4th`)
+        gameInfo.innerHTML = `No Gain`
     }
 }
-
-runPlay()
-runPlay()
-runPlay()
-runPlay()
-
