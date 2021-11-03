@@ -139,7 +139,9 @@ const runPlay = () => {
 }
 
 // Throwing play
+
 pass.addEventListener('click', (e) => {
+    console.log(game)
     if(game.down === 4 && game.tenYards < 10) {
         gameInfo.innerHTML = "It's fourth down. Do you want to punt/kick or go for it?"
         if(game.position > 60) {
@@ -149,7 +151,6 @@ pass.addEventListener('click', (e) => {
         }
     } else {
         passPlay()
-        game.down ++
     }  
 })
 
