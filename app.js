@@ -10,12 +10,16 @@ const gameInfo = document.querySelector(".gameinfo")
 const gameInPlay = document.querySelector(".game-in-play")
 const run = document.querySelector(".run")
 const pass = document.querySelector(".pass")
+const punt = document.querySelector(".punt")
+const kick = document.querySelector('.kick')
 
 // Team Objects
 
 let game = {
     down: 0,
-    coin: ""
+    coin: "",
+    position: 0,
+    tenYards: 0
 }
 
 let yourTeam = {
@@ -72,7 +76,6 @@ letsPlay.addEventListener('click', (e) => {
     form.classList.add('hidden')
     letsPlay.classList.add('hidden')
     kickOff.classList.remove('hidden')
-    nextPlay.classList.remove('hidden')  
 })
 
 // Kick Off
@@ -130,13 +133,74 @@ const runPlay = () => {
             gameInfo.innerHTML = `${yourTeam.name} ran the ball for a gain of ${yards}. They are on the ${yourTeam.position}`
         }
         else {
-            console.log('No Gain')
             gameInfo.innerHTML = `${yourTeam.name} made no gain`
         }
     }
 }
 
 // Throwing play
+pass.addEventListener('click', (e) => {
+    if(game.down === 4 && game.tenYards < 10) {
+        gameInfo.innerHTML = "It's fourth down. Do you want to punt/kick or go for it?"
+        if(game.position > 60) {
+            kick.classList.remove("hidden")
+        } else {
+            punt.classList.remove("hidden")
+        }
+    } else {
+        passPlay()
+        game.down ++
+    }  
+})
+
+const passPlay = () => {
+    if(yourTeam.hasBall) {
+        let chance = Math.random()
+        if(chance > 0.90) {
+            let yards = Math.floor(Math.random() * 50);
+            yourTeam.position += yards
+                if(yards < 10) {
+                    game.tenYards += yards
+                } else {
+                    game.tenYards = 0
+                }
+            gameInfo.innerHTML = `${yourTeam.name} threw the ball for a gain of ${yards}. They are on the ${yourTeam.position} yard line`
+        }
+        else if (chance > 0.75) {
+            let yards = Math.floor(Math.random() * 25)
+            yourTeam.position += yards
+                if(yards < 10) {
+                    game.tenYards += yards
+                } else {
+                    game.tenYards = 0
+                }
+            gameInfo.innerHTML = `${yourTeam.name} threw the ball for a gain of ${yards}. They are on the ${yourTeam.position}`
+        }
+        else if (chance > 0.50){
+            let yards = Math.floor(Math.random() * 10);
+            yourTeam.position += yards
+                if(yards < 10) {
+                    game.tenYards += yards
+                } else {
+                    game.tenYards = 0
+                }
+            gameInfo.innerHTML = `${yourTeam.name} threw the ball for a gain of ${yards}. They are on the ${yourTeam.position}`
+        }
+        else if (chance > 0.10){
+            let yards = Math.floor(Math.random() * 5);
+            yourTeam.position += yards
+            game.tenYards += yards
+            gameInfo.innerHTML = `${yourTeam.name} threw the ball for a gain of ${yards}. They are on the ${yourTeam.position}`
+        }
+        else {
+            console.log('No Gain')
+            gameInfo.innerHTML = `${yourTeam.name} made no gain`
+        }
+    }
+    else {
+        gameInfo.innerHTML = "it's fourth down"
+    }
+}
 
 // 4th Down Logic
 
