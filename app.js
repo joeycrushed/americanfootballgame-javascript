@@ -1,9 +1,9 @@
 
 const form = document.querySelector('#form')
 const pickCoin = document.querySelector('#cointoss')
-const coinToss = document.getElementById('flipcoin')
+const flipCoin = document.querySelector("#flipcoin")
 const playButton = document.querySelector(".playbutton")
-const theFlip = document.querySelector(".the_flip")
+const coinTossInfo = document.querySelector("#heads_tails")
 const theGame = document.querySelector("#container-game")
 const kickOff = document.querySelector(".kickoff")
 const gameInfo = document.querySelector(".gameinfo")
@@ -35,32 +35,49 @@ form.addEventListener('submit', (e) => {
     e.preventDefault()
     yourTeam.coin = pickCoin.value
     document.querySelector('#yourpick').innerHTML = `You have picked ${pickCoin.value}`
-    console.log(yourTeam)
+    console.log(yourTeam.coin)
 })
 
 // Coin Flip
 
-coinToss.addEventListener('click', flipCoin)
-
-function flipCoin(event) {
-    let num = Math.random();
+flipCoin.addEventListener('click', (e) => {
+    const num = Math.floor(Math.random() * 10)
+    console.log(num)
     let coin = ""
-    results = document.getElementById("heads_tails")
-     if(num < 0.5) {
-        coin = "Heads"
+        if(num < 5 ) {
+            coin = "Heads"
         } else {
-        coin = "Tails"
-     }
-     if(coin == yourTeam.coin) {
-         console.log("you win")
-         results.innerHTML = `It was ${coin}, You get the ball`
-         yourTeam.hasBall = true
-     } else if (coin != yourTeam.coin) {
-         results.innerHTML = `It was ${coin}, The other team get the ball`
-         otherTeam.hasBall = true
-     }
-     playButton.classList.remove('hidden')
-}
+            coin = "Tails"
+        }
+        coinTossInfo.innerHTML = "The referee is flipping the coin ... "
+        setTimeout(function() {
+            console.log(`the coin was ${coin}`)
+            if(coin == yourTeam.coin) {
+                coinTossInfo.innerHTML = "You won the toss, you get the ball"
+                yourTeam.hasBall = true
+            } else {
+                coinTossInfo.innerHTML = "You lost the toss, you other team get the ball"
+                otherTeam.hasBall = true
+            }
+        },3000)
+    
+})
+// coinToss.addEventListener('click', flipCoin)
+// function flipCoin(event) {
+//     let num = Math.random();
+//     console.log(num)
+//     let coin = ""
+//     results = document.getElementById("heads_tails")
+//      if(num < 0.5) {
+//         coin = "Heads"
+//         } else {
+//         coin = "Tails"
+//      }
+//      console.log(coin)
+//      playButton.classList.remove('hidden')
+// }
+
+
 
 // Kick off
 
